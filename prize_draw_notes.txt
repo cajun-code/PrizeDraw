@@ -1,0 +1,42 @@
+prize_members1:
+  private TextToSpeech mTts;
+
+prize_members2:
+  private EditText guests;
+  private TextToSpeech mTts;
+  private Random generator;
+
+Create_intent:
+          Intent checkIntent = new Intent();
+          checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+          startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
+          
+tts1:
+    private TextToSpeech mTts;
+    protected void onActivityResult(
+            int requestCode, int resultCode, Intent data) {
+        if (requestCode == MY_DATA_CHECK_CODE) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                // success, create the TTS instance
+                mTts = new TextToSpeech(this, this);
+            } else {
+                // missing data, install it
+                Intent installIntent = new Intent();
+                installIntent.setAction(
+                    TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installIntent);
+            }
+        }
+    }
+
+Test_talk:
+  mTts.speak("Hello, Mobile City", TextToSpeech.QUEUE_FLUSH, null);
+    
+Create_random:
+  Random generator = new Random();
+  
+pick_prize:
+  int winner = generator.nextInt(Integer.parseInt(guests.getText().toString())) + 1;
+	String message = "The winner is number " + winner;
+	mTts.speak(message, TextToSpeech.QUEUE_ADD , null);
+	Toast.makeText(PrizeDrawActivity.this, message, 2000).show();
