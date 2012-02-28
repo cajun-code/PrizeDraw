@@ -1,0 +1,21 @@
+Tasks fro mobile city
+1. Create Project
+2. Open layout for edit
+3. add header label and button
+4. open activity for edit
+5. add members 1
+6. add tts check
+7. bind to button
+8. add tts create 
+9. create an view onclick listener
+10. add tts onclick code
+11. run demo1
+12. open layout for edit again
+13. add label and number text field
+14. change the text on the button
+15. go back to activity
+16. change the members to prize members
+17. bind to the edit text
+18. create the random number generator
+19. chnage the onclick to prize_click
+20. run demo2

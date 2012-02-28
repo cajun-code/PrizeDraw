@@ -1,4 +1,5 @@
 bin
 deploy
 .metadata
+.DS_Store
 
