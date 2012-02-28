@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="mc_create_tts_intent">Intent checkIntent = new Intent();
+checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="mc_prize_click">int winner = generator.nextInt(Integer.parseInt(guests.getText().toString())) + 1;
+String message = "The winner is number " + winner;
+mTts.speak(message, TextToSpeech.QUEUE_ADD , null);
+Toast.makeText(PrizeDrawActivity.this, message, 2000).show();</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="mc_prize_members1">private TextToSpeech mTts;</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="mc_prize_members2">private EditText guests;
+private TextToSpeech mTts;
+private Random generator;</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="mc_tts_check_response">protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == MY_DATA_CHECK_CODE) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                // success, create the TTS instance
+                mTts = new TextToSpeech(this, this);
+            } else {
+                // missing data, install it
+                Intent installIntent = new Intent();
+                installIntent.setAction(
+                    TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installIntent);
+            }
+        }
+    }</template><template autoinsert="true" context="java" deleted="false" description="" enabled="true" name="mc_tts_click">mTts.speak("Hello, Mobile City", TextToSpeech.QUEUE_FLUSH, null);</template></templates>
